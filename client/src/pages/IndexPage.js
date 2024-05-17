@@ -1,11 +1,11 @@
 import Post from "../Post";
 
-export default function Indexpage(){
-    return (
-      <>
-        <Post />
-        <Post />
-        <Post />
-      </>
-    );
+export default function IndexPage() {
+  return (
+    <>
+      <Post />
+      <Post />
+      <Post />
+    </>
+  );
 }
