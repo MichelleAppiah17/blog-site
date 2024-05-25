@@ -11,12 +11,12 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
-const path = require("path"); // Added path module
+const path = require("path"); 
 
 const app = express();
 const saltRounds = 10;
 const secret = "assf45yr5u76ff";
-const tokenExpiration = "1h"; // Token expiration time
+const tokenExpiration = "1h"; 
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
@@ -118,7 +118,7 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
 app.get("/post", async (req, res) => {
   try {
     const posts = await Post.find()
-      .populate("author", "username") // Ensure author field is populated
+      .populate("author", "username") 
       .sort({ createdAt: -1 })
       .limit(20);
     res.json(posts);
@@ -127,6 +127,11 @@ app.get("/post", async (req, res) => {
   }
 });
 
+app.get("/post/:id", async (req, res) => {
+  const { id } = req.params;
+  const postDoc = Post.findById(id).populate('author', ['username']);
+  res.json(postDoc);
+})
 
 app.listen(4000, () => {
   console.log("Server running on http://localhost:4000");

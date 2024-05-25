@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CustomReactQuill from "../components/customReactQuill"; // Adjust the path if needed
+import CustomReactQuill from "../components/customReactQuill"; 
 import { Navigate } from "react-router-dom";
 
 const modules = {
@@ -54,18 +54,16 @@ export default function CreatePost() {
       const response = await fetch("http://localhost:4000/post", {
         method: "POST",
         body: data,
-        credentials: "include",
+        credentials: "include"
       });
 
       if (response.ok) {
         setRedirect(true);
       } else {
         console.error("Failed to create post", response.statusText);
-        // Handle errors as needed
       }
     } catch (error) {
       console.error("An error occurred", error);
-      // Handle errors as needed
     }
   }
 
